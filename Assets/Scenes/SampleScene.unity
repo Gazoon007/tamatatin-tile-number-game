@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171043921}
   - component: {fileID: 171043920}
+  - component: {fileID: 171043922}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -167,6 +168,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171043922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171043919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f1b2fae2759d94699174d21a3958c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2133329812}
   - component: {fileID: 2133329811}
+  - component: {fileID: 2133329813}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -293,7 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7a671b354e5764a8299c6d020c94ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 3832983647918727386, guid: 77cc31f2a0cf934458043d0628ff2a4c, type: 3}
   minRandomValue: 0
   maxRandomValue: 9
   numberAppearancePossibility: 0.6
@@ -315,3 +328,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2133329813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133329810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838082c1963b489ab3806b848e526ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile: {fileID: 3832983647918727386, guid: 77cc31f2a0cf934458043d0628ff2a4c, type: 3}

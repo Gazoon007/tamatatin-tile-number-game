@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMP: {fileID: 8172538330877904138}
+  selectionMode: {fileID: 11400000, guid: 9d826052dbeb3d84691aca1c4392d6ba, type: 2}
 --- !u!114 &3986519228432451530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d9a9c1ff21f124cb1896e549685fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionMode: {fileID: 11400000, guid: 9d826052dbeb3d84691aca1c4392d6ba, type: 2}
 --- !u!61 &1497356573949442859
 BoxCollider2D:
   m_ObjectHideFlags: 0
