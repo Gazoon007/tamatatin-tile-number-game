@@ -1,6 +1,6 @@
 ﻿namespace Selection_Mode
 {
-	public enum Selection
+	public enum Selections
 	{
 		Normal,
 		Plus,

@@ -1,14 +1,15 @@
 using Core.Helper;
+using Sirenix.OdinInspector;
 using Tile;
 using UnityEngine;
 
 namespace Selection_Mode
 {
 	[CreateAssetMenu(menuName = "SelectionMode/Plus Mode")]
-	public class SelectionModePlusData : SelectionModeData
+	public class SelectionModePlus : SelectionModeData
 	{
+		[MinValue(1)] public int rangeTile = 2;
 		public int attackValue = 1;
-		public int rangeTile = 2;
 
 		public override void MapSelectedTile(HighlightTile highlightTile)
 		{
@@ -19,9 +20,9 @@ namespace Selection_Mode
 			IterateTileByDimension("row", tilePosition, tileSpriteSize);
 		}
 
-		public override void DecreaseValue(Tile.Tile tile)
+		public override void DecreaseValue(TileUnit tileUnit)
 		{
-			tile.SetValue(tile.Number - attackValue);
+			tileUnit.SetValue(tileUnit.Number - attackValue);
 		}
 
 		private void IterateTileByDimension(string dimensionType, Vector2 centerPoint, Vector2 tileSpriteSize)
@@ -34,19 +35,8 @@ namespace Selection_Mode
 					"row" => new Vector2(centerPoint.x, centerPoint.y + dimension * tileSpriteSize.y),
 					_ => default
 				};
-				var selectedTile =
-					TileManager.Instance.GetTileAtPosition(tileAtPosition.Round());
-
-				if (selectedTile != null)
-				{
-					var spriteRenderer = selectedTile.GetComponentsInChildren<SpriteRenderer>()[1];
-					var highlightedTile = selectedTile.GetComponent<HighlightTile>();
-
-					spriteRenderer.enabled = true;
-					highlightedTile.IsTileHighlighted = true;
-
-					TileManager.Instance.HighlightedTiles[tileAtPosition.Round()] = highlightedTile;
-				}
+				
+				SharedFunctions.MapHighlightTileAtPosition(tileAtPosition);
 			}
 		}
 	}

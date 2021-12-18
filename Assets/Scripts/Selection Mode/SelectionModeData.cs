@@ -6,6 +6,6 @@ namespace Selection_Mode
 	public abstract class SelectionModeData : ScriptableObject, ISelection
 	{
 		public abstract void MapSelectedTile(HighlightTile highlightTile);
-		public abstract void DecreaseValue(Tile.Tile tile);
+		public abstract void DecreaseValue(TileUnit tileUnit);
 	}
 }

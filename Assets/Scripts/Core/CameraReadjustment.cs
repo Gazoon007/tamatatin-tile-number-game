@@ -5,16 +5,14 @@ namespace Core
 {
 	public class CameraReadjustment : MonoBehaviour
 	{
-		private Camera camera;
-
 		private void OnEnable()
 		{
-			TileGenerator.OnGeneratorInitialized += ReadjustCamera;
+			TileGenerator.Instance.OnGeneratorInitialized += ReadjustCamera;
 		}
 
 		private void OnDisable()
 		{
-			TileGenerator.OnGeneratorInitialized -= ReadjustCamera;
+			TileGenerator.Instance.OnGeneratorInitialized -= ReadjustCamera;
 		}
 
 		private void ReadjustCamera(Vector2 newPosition)

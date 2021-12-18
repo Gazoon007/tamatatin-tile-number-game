@@ -76,7 +76,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4947199d684ab8e4da3604815bd50dd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMP: {fileID: 8172538330877904138}
-  selectionMode: {fileID: 11400000, guid: 9d826052dbeb3d84691aca1c4392d6ba, type: 2}
+  selectionMode: {fileID: 11400000, guid: 5e944199098537046aa3859f5748f7b5, type: 2}
 --- !u!114 &3986519228432451530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d9a9c1ff21f124cb1896e549685fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionMode: {fileID: 11400000, guid: 9d826052dbeb3d84691aca1c4392d6ba, type: 2}
+  selectionMode: {fileID: 11400000, guid: 5e944199098537046aa3859f5748f7b5, type: 2}
 --- !u!61 &1497356573949442859
 BoxCollider2D:
   m_ObjectHideFlags: 0

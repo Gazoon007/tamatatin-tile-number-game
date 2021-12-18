@@ -17,15 +17,16 @@ namespace Tile
 		[SerializeField] private int rowSize;
 		[SerializeField] private int marginPerTile;
 
-		public static Action<Vector2> OnGeneratorInitialized;
+		public Action<Vector2> OnGeneratorInitialized;
+		public Action OnGeneratorFinished;
 
 		private Vector2 _tileSpriteSize;
-		private Tile _tile;
+		private TileUnit _tileUnit;
 
 		private void Start()
 		{
 			_tileSpriteSize = TileManager.Instance.TileSpriteSize;
-			_tile = TileManager.Instance.Tile;
+			_tileUnit = TileManager.Instance.TileUnit;
 
 			OnGeneratorInitialized?.Invoke(
 				new Vector2(
@@ -41,7 +42,7 @@ namespace Tile
 			for (var row = 0; row < rowSize; row++)
 			for (var column = 0; column < columnSize; column++)
 			{
-				var instantiatedTile = Instantiate(_tile, transform);
+				var instantiatedTile = Instantiate(_tileUnit, transform);
 				var position = transform.position;
 
 				GenerateRandomNumber(instantiatedTile);
@@ -53,13 +54,16 @@ namespace Tile
 
 				TileManager.Instance.Tiles[((Vector2)instantiatedTile.transform.position).Round()] = instantiatedTile;
 			}
+			OnGeneratorFinished?.Invoke();
 		}
 
-		private void GenerateRandomNumber(Tile instantiatedTile)
+		private void GenerateRandomNumber(TileUnit instantiatedTileUnit)
 		{
 			var result = Random.Range(0f, 1f);
 			if (result <= numberAppearancePossibility)
-				instantiatedTile.SetValue(Random.Range(minRandomValue, maxRandomValue));
+				instantiatedTileUnit.SetValue(Random.Range(minRandomValue, maxRandomValue));
+			else
+				instantiatedTileUnit.SetValue(0);
 		}
 	}
 }
