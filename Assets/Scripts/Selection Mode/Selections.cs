@@ -4,6 +4,9 @@
 	{
 		Normal,
 		Plus,
-		Diagonal
+		Diagonal,
+		Diamond,
+		Heart,
+		Swastika
 	}
 }

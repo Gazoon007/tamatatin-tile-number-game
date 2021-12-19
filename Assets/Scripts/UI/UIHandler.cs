@@ -2,14 +2,14 @@ using System.Collections;
 using Core;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI
 {
 	public class UIHandler : MonoBehaviour
 	{
-		[SerializeField] private TextMeshProUGUI textMp;
+		[SerializeField] private TextMeshProUGUI gameTurnText;
 		[SerializeField] private RectTransform panel;
+		[SerializeField] private RectTransform selectionButtonModes;
 		[SerializeField] private PlayerController playerController;
 
 		private void OnEnable()
@@ -26,13 +26,14 @@ namespace UI
 
 		private void ShowFinishedPanel()
 		{
-			panel.GetComponent<Image>().enabled = true;
+			panel.gameObject.SetActive(true);
+			selectionButtonModes.gameObject.SetActive(false);
 		}
 
 		private IEnumerator DelayingUpdateTurnUI()
 		{
 			yield return new WaitForSeconds(0.1f);
-			textMp.text = $"TURN {GameManager.Instance.Turn.ToString()}";
+			gameTurnText.text = $"TURN {GameManager.Instance.Turn.ToString()}";
 		}
 	
 		private void UpdateTurnUI()

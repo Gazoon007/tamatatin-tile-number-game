@@ -10,16 +10,19 @@ namespace Tile
 	public class TileUnit : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI textMP;
-		[SerializeField] private SelectionModeData selectionMode;
 
-		private int _number;
 		private HighlightTile _highlightTile;
 		private PlayerController _playerController;
 		private bool _hasReachedZero;
 
-		public int Number => _number;
+		public int Number { get; private set; }
 		public Action OnReachedZeroValue;
-		
+		public Action OnReachedZeroValueProp
+		{
+			get => OnReachedZeroValue;
+			set => OnReachedZeroValue = value;
+		}
+
 		void OnDrawGizmos() 
 		{
 			Handles.Label(transform.position + Vector3.up, transform.position.x + ", " + transform.position.y );
@@ -45,14 +48,14 @@ namespace Tile
 
 		private void CheckTileFirst()
 		{
-			if (_number == 0)
+			if (Number == 0)
 				OnReachedZeroValue?.Invoke();
 		}
 
 		private void Hit()
 		{
 			if (_highlightTile.IsTileHighlighted)
-				selectionMode.DecreaseValue(this);
+				GameManager.Instance.SelectionMode.DecreaseValue(this);
 		}
 
 		public void SetValue(int value)
@@ -64,7 +67,7 @@ namespace Tile
 				OnReachedZeroValue?.Invoke();
 				_hasReachedZero = true;
 			}
-			_number = value;
+			Number = value;
 			textMP.text = value == 0 ? "" : value.ToString();
 		}
 	}

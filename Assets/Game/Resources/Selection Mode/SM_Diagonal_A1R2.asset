@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a963da064a504f67894c04ac7d7849b1, type: 3}
   m_Name: SM_Diagonal_A1R2
   m_EditorClassIdentifier: 
-  attackValue: 1
+  selection: 2
   rangeTile: 2
+  attackValue: 1

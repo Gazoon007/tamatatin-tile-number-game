@@ -41,15 +41,14 @@ namespace Tile
 		}
 		
 		
-		// TODO: Fix this, how to get delgatedObserverName and dynamically listen to delegatedMethod 
-		// public void ExecuteMethodPerTile(string delegatedObserverName, Action delegatedMethod)
-		// {
-		// 	foreach (var entry in _tiles)
-		// 	{
-		// 		var prop = entry.Value.GetType().GetProperty(delegatedObserverName);
-		// 		var observer = prop?.GetValue(entry.Value);
-		// 		prop?.SetValue(entry.Value, (Action) observer + delegatedMethod);
-		// 	}
-		// }
+		public void ExecuteMethodPerTile(string delegatedObserverPropName, Action delegatedMethod)
+		{
+			foreach (var (_, value) in _tiles)
+			{
+				var prop = value.GetType().GetProperty(delegatedObserverPropName);
+				var observer = prop?.GetValue(value);
+				prop?.SetValue(value, (Action) observer + delegatedMethod);
+			}
+		}
 	}
 }

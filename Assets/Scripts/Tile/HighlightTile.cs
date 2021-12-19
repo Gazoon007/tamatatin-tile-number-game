@@ -1,12 +1,10 @@
-using Selection_Mode;
+using Core;
 using UnityEngine;
 
 namespace Tile
 {
 	public class HighlightTile : MonoBehaviour
 	{
-		[SerializeField] private SelectionModeData selectionMode;
-
 		private SpriteRenderer _highlightedTileSprite;
 		public bool IsTileHighlighted { get; set; }
 
@@ -18,11 +16,12 @@ namespace Tile
 
 		private void OnMouseEnter()
 		{
-			selectionMode.MapSelectedTile(this);
+			GameManager.Instance.SelectionMode?.MapSelectedTile(this);
 		}
 
 		private void OnMouseExit()
 		{
+			// TODO: Need refactor, violate DRY
 			foreach (var entry in TileManager.Instance.HighlightedTiles)
 			{
 				entry.Value.IsTileHighlighted = false;

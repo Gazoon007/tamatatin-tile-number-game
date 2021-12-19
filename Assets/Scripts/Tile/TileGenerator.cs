@@ -7,19 +7,19 @@ namespace Tile
 {
 	public class TileGenerator : Singleton<TileGenerator>
 	{
+		[Header("Set Random Properties")]
 		[SerializeField] private int minRandomValue;
 		[SerializeField] private int maxRandomValue;
 		[SerializeField] private float numberAppearancePossibility;
 
-		[Header("Set Board Dimension")] [SerializeField]
-		private int columnSize;
-
+		[Header("Set Board Dimension")]
+		[SerializeField] private int columnSize;
 		[SerializeField] private int rowSize;
-		[SerializeField] private int marginPerTile;
 
 		public Action<Vector2> OnGeneratorInitialized;
 		public Action OnGeneratorFinished;
-
+		public Vector2 ColumnAndRow => new(columnSize, rowSize);
+		
 		private Vector2 _tileSpriteSize;
 		private TileUnit _tileUnit;
 

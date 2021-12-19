@@ -1,33 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
-using Core.Helper;
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using Tile;
 using UnityEngine;
 
-namespace Selection_Mode
+namespace Selection_Mode.Modes
 {
-	[CreateAssetMenu(menuName = "SelectionMode/Hollow Diamond Mode")]
-	public class SelectionModeHollowDiamond : SelectionModeData
+	[CreateAssetMenu(menuName = "SelectionMode/Diamond Mode")]
+	public class DiamondMode : SelectionModeData
 	{
-		[MinValue(2)] [PropertyTooltip("Minimum Value is 2")]
-		public int rangeTile = 2;
-
-		public int attackValue = 1;
-
 		public override async void MapSelectedTile(HighlightTile highlightTile)
 		{
-			var tileSpriteSize = TileManager.Instance.TileSpriteSize;
-			var tilePosition = highlightTile.transform.position;
-			ConsoleProDebug.Watch("Center Point", highlightTile.transform.position.ToString());
-
 			var listOfSides = new[] { "leftToTop", "topToRight", "rightToBottom", "bottomToLeft" };
-			var tasks = listOfSides
-				.Select(side => IterateTileByDimension(side, tilePosition, tileSpriteSize))
-				.ToList();
-
-			await Task.WhenAll(tasks);
+			
+			await SharedFunctions.SetupTheProperDimension(highlightTile, listOfSides, IterateTileByDimension);
 		}
 
 		public override void DecreaseValue(TileUnit tileUnit)
@@ -58,6 +48,19 @@ namespace Selection_Mode
 			}
 
 			return Task.CompletedTask;
+		}
+	}
+	
+	[UsedImplicitly]
+	public class DiamondModeAttributeProcessor : OdinAttributeProcessor<DiamondMode>
+	{
+		public override void ProcessChildMemberAttributes(InspectorProperty parentProperty, MemberInfo member, List<Attribute> attributes)
+		{
+			if (member.Name == "rangeTile")
+				attributes.Add(new MinValueAttribute(1));
+			
+			if (member.Name == "attackValue")
+				attributes.Add(new MinValueAttribute(1));
 		}
 	}
 }

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9b4e25fe7e4717b3972798391ca517, type: 3}
-  m_Name: SM_Hollow_Diamond A1R2
+  m_Script: {fileID: 11500000, guid: 9e28bf49b9f4483d882c9ca004ba20b9, type: 3}
+  m_Name: SM_Heart_A1R3
   m_EditorClassIdentifier: 
+  selection: 4
+  rangeTile: 3
   attackValue: 1
-  rangeTile: 2
