@@ -9,7 +9,7 @@ namespace Core.Helper
 		/// </summary>
 		/// <param name="v2"></param>
 		/// <param name="decimalPlaces"></param>
-		/// <returns></returns>
+		/// <returns>rounded Vector2</returns>
 		public static Vector2 Round(this Vector2 v2, int decimalPlaces = 2)
 		{
 			var multiplier = 1f;

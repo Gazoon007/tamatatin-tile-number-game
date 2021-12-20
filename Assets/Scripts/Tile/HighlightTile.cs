@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Tile
 {
+	/// <summary>
+	/// Responsible for map the highlight tile and vice versa.
+	/// </summary>
 	public class HighlightTile : MonoBehaviour
 	{
 		private SpriteRenderer _highlightedTileSprite;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Core.Helper;
 using UnityEngine;
 
@@ -39,7 +38,6 @@ namespace Tile
 		{
 			return _tiles.TryGetValue(position, out var tileAtPosition) ? tileAtPosition : null;
 		}
-		
 		
 		public void ExecuteMethodPerTile(string delegatedObserverPropName, Action delegatedMethod)
 		{

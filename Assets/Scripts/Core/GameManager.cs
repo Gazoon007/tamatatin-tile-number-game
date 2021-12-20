@@ -6,20 +6,23 @@ using UnityEngine;
 
 namespace Core
 {
+	/// <summary>
+	/// Responsible for save turn value, counting, and also update the turn.
+	/// </summary>
 	public class GameManager : Singleton<GameManager>
 	{
 		[SerializeField] private SelectionModeData[] selectionModes;
 
 		private PlayerController _playerController;
-		private int _turn = 1;
 		private int _tilesZeroValueQty;
 		private SelectionModeData _selectionMode;
+		private int _turn = 1;
 
 		public Action OnFinishedGame;
 		public int Turn => _turn;
 		public SelectionModeData SelectionMode => _selectionMode;
 		public SelectionModeData[] SelectionModes => selectionModes;
-
+		
 		private void OnEnable()
 		{
 			_playerController = GetComponent<PlayerController>();
@@ -31,27 +34,21 @@ namespace Core
 
 		private void OnDisable()
 		{
+			if(!gameObject.scene.isLoaded) return;
 			TileGenerator.Instance.OnGeneratorFinished -= GetReferenceOfAllTiles;
 			_playerController.OnClickToTile -= UpdateTurn;
 		}
 
-		// Need refactor, violate SRP
+
 		private void GetReferenceOfAllTiles()
 		{
-			// Need to be refactored, violate SRP
-			// foreach (var tile in FindObjectsOfType<TileUnit>())
-			// {
-			// 	tile.OnReachedZeroValue += CheckGameState;
-			// }
-
-			// Solution to follow SRP
 			TileManager.Instance.ExecuteMethodPerTile("OnReachedZeroValueProp", CheckGameState);
 		}
 
 		private void CheckGameState()
 		{
 			_tilesZeroValueQty += 1;
-			if (_tilesZeroValueQty == TileManager.Instance.TotalTiles)
+			if (Turn > 1 && _tilesZeroValueQty == TileManager.Instance.TotalTiles)
 			{
 				FinishGame();
 			}
@@ -60,7 +57,7 @@ namespace Core
 		private void FinishGame()
 		{
 			OnFinishedGame?.Invoke();
-			ResetTurn();
+			ResetGame();
 		}
 
 		private void UpdateTurn()
@@ -68,9 +65,10 @@ namespace Core
 			_turn += 1;
 		}
 
-		private void ResetTurn()
+		public void ResetGame()
 		{
 			_turn = 1;
+			_tilesZeroValueQty = 0;
 		}
 
 		public void ChangeSelection(Selections selection, Vector2 attackAndRangeValue)

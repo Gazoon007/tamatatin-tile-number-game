@@ -7,9 +7,12 @@ using UnityEngine;
 
 namespace Tile
 {
+	/// <summary>
+	/// Responsible for manage the logic for the individual tile.
+	/// </summary>
 	public class TileUnit : MonoBehaviour
 	{
-		[SerializeField] private TextMeshProUGUI textMP;
+		[SerializeField] private TextMeshProUGUI tileValueText;
 
 		private HighlightTile _highlightTile;
 		private PlayerController _playerController;
@@ -23,10 +26,13 @@ namespace Tile
 			set => OnReachedZeroValue = value;
 		}
 
-		void OnDrawGizmos() 
-		{
-			Handles.Label(transform.position + Vector3.up, transform.position.x + ", " + transform.position.y );
-		}
+		/// <summary>
+		/// Debugging purpose only, it's easy to directly know the coordinate of for each tile by looking at the scene
+		/// </summary>
+		// void OnDrawGizmos() 
+		// {
+		// 	Handles.Label(transform.position + Vector3.up, transform.position.x + ", " + transform.position.y );
+		// }
 		
 		private void OnEnable()
 		{
@@ -37,6 +43,7 @@ namespace Tile
 
 		private void OnDisable()
 		{
+			if(!gameObject.scene.isLoaded) return;
 			_playerController.OnClickToTile -= Hit;
 			TileGenerator.Instance.OnGeneratorFinished -= CheckTileFirst;
 		}
@@ -46,6 +53,10 @@ namespace Tile
 			_highlightTile = GetComponent<HighlightTile>();
 		}
 
+		/// <summary>
+		/// Checking first if tile is already 0 by the random tile value generator, so if there are, it will update the
+		/// counter of zero values in game manager right away the game start. 
+		/// </summary>
 		private void CheckTileFirst()
 		{
 			if (Number == 0)
@@ -68,7 +79,7 @@ namespace Tile
 				_hasReachedZero = true;
 			}
 			Number = value;
-			textMP.text = value == 0 ? "" : value.ToString();
+			tileValueText.text = value == 0 ? "" : value.ToString();
 		}
 	}
 }
