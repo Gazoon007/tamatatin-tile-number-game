@@ -6,7 +6,7 @@ namespace Core
 	public class CameraReadjustment : MonoBehaviour
 	{
 
-		[SerializeField] private float cameraZoomOutRatio = 1.4f;
+		[SerializeField] private float cameraZoomOutRatio = 0.5f;
 
 		private void OnEnable()
 		{

@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
 using Core;
-using Core.Helper.OdinCommunityTools;
+using Core.Helper;
 using JetBrains.Annotations;
 using Selection_Mode;
 using Sirenix.OdinInspector;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,7 +26,10 @@ namespace UI
 		
 		[ListItemSelector("SetAttackAndRangeValueByOdin")] [SerializeField] [Title("Attack And Range")]
 		[InfoBox("Choose the attack and range pair value by click the row of the list, X denotes Attack Value, " +
-		         "while Y denotes the Range Tiles")]
+		         "while Y denotes the Range Tiles.")]
+		[InfoBox("DO NOT EDIT THE VALUE OF THE LIST, IT DIRECTLY DERIVED FROM SCRIPTABLE OBJECT, " +
+		         "IF YOU WANT TO EDIT THE VALUE, MAKE OTHER SCRIPTABLE OBJECT INSTANCE INSTEAD AND ADD IT IN THE " +
+		         "INSPECTOR OF GAME MANAGER COMPONENT ON THE LIST OF SELECTION MODES",InfoMessageType.Warning)]
 		private List<Vector2> attackAndRangeValueList = new();
 
 		[SerializeField, ReadOnly] private Vector2 currentAttackAndRangeValue;

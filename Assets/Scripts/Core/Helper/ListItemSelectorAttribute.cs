@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Helper.OdinCommunityTools
+namespace Core.Helper
 {
 	public class ListItemSelectorAttribute : Attribute
 	{

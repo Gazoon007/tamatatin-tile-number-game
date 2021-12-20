@@ -1,14 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Reflection;
 using Core;
 using Core.Helper;
-using JetBrains.Annotations;
-using Selection_Mode.Modes;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -89,7 +82,7 @@ namespace Tile
 		// This region actually serve a VERY bad practice, because we violate OCP, and also had some repeated code on
 		// certain part, we should handle it like we handle SelectionMode namespace that use strategy pattern, because
 		// I have no time left, I will left the message here so you can understand that i'm indeed concern about this
-		// bad practice
+		// bad practice. TODO: Implement strategy pattern for accomodate this board changer logic.
 
 	#region Board Changer Logic
 

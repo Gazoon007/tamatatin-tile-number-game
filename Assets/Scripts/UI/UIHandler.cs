@@ -21,6 +21,7 @@ namespace UI
 		private void OnEnable()
 		{
 			playerController.OnClickToTile += UpdateTurnUI;
+			TileGenerator.Instance.OnGeneratorInitialized += UpdateTurnUI;
 			GameManager.Instance.OnFinishedGame += ShowFinishedPanel;
 		}
 
@@ -44,8 +45,14 @@ namespace UI
 			yield return new WaitForSeconds(0.1f);
 			gameTurnText.text = $"TURN {GameManager.Instance.Turn.ToString()}";
 		}
-	
+
 		private void UpdateTurnUI()
+		{
+			StartCoroutine(DelayingUpdateTurnUI());
+		}
+		
+		// TODO: Need refactor, useless overload method just for be able to listen to onGeneratorInitialized
+		private void UpdateTurnUI(Vector2 _)
 		{
 			StartCoroutine(DelayingUpdateTurnUI());
 		}

@@ -5,7 +5,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.Helper.OdinCommunityTools
+namespace Core.Helper.Editor
 {
     [DrawerPriority(0.01, 0, 0)]
     public class ListItemSelectorAttributeDrawer : OdinAttributeDrawer<ListItemSelectorAttribute>

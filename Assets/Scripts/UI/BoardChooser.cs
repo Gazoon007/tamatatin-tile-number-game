@@ -1,14 +1,8 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Core;
-using Selection_Mode;
-using Sirenix.OdinInspector;
 using Tile;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI
 {
