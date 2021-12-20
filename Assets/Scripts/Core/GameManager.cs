@@ -42,6 +42,13 @@ namespace Core
 
 		private void GetReferenceOfAllTiles()
 		{
+			// This is passing the delegated method check game state to tile manager, so we let the TileManager to
+			// iterate list of tiles, but for the tile itself we want to execute our delegated method that we pass from
+			// game manager
+			//
+			// This is controversial, a kinda bit messy, but not violate SRP, also there is string parameter that i don't
+			// like.
+			// TODO: Think another solution if possible for the greater cleanliness of the code!
 			TileManager.Instance.ExecuteMethodPerTile("OnReachedZeroValueProp", CheckGameState);
 		}
 
